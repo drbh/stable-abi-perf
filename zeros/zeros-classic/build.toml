@@ -1,0 +1,16 @@
+[general]
+name = "zeros-classic"
+version = 1
+edition = 6
+license = "Apache-2.0"
+backends = ["cuda"]
+
+[torch]
+src = ["torch-ext/torch_binding.cpp"]
+
+
+[kernel.zeros]
+language = "cpp-cuda"
+depends = ["torch"]
+cuda-capabilities = ["8.9"]
+src = ["csrc/zeros.cu"]
